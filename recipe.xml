@@ -1,0 +1,29 @@
+<recipe>
+	<config>
+		<input-directory path="source"/>
+		<output-directory path="build"/>
+		<include-directory path="source"/>
+		<compiler>
+			<executable path="prep"/>
+			<argument position="before" priority="first" value="-I source/"/>
+			<relative-output-directory position="before" priority="last" text-before='-D "__WD=' text-after='"'/>
+			<input-file position="middle" priority="first" before='-i "' after='"'/>
+			<output-file position="after" priority="last" before='-o "' after='"'/>
+		</compiler>
+	</config>
+
+
+	<types>
+		<html-directory>
+			<glob regex="^.*\.html$"/>
+		</html-directory>
+
+		<articles-directory>
+			<glob recursive="true">
+				<not-path-regex pattern=""/>
+			</glob>
+		</articles-directory>
+	</types>
+
+
+</recipe>
